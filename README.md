@@ -8,7 +8,7 @@
    ```
    DB_HOST=localhost
    DB_USER=root
-   DB_PASSWORD=VinyasCSE@1234
+   DB_PASSWORD=your password
    DB_NAME=bike_accessories
    ```
 3. Initialize the database by running:
