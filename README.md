@@ -2,13 +2,27 @@
 
 ## Setup Instructions
 
-### Database Setup
+### Quick Start with Docker (Recommended)
+You can run the entire application without installing Node.js or MySQL locally.
+
+1.  **Prerequisites**: Install [Docker Desktop](https://www.docker.com/products/docker-desktop).
+2.  **Run**:
+    ```bash
+    docker-compose up --build
+    ```
+3.  **Access**:
+    -   Frontend: [http://localhost](http://localhost)
+    -   Backend API: [http://localhost:5000](http://localhost:5000)
+
+### Manual Setup (Without Docker)
+
+#### Database Setup
 1. Make sure you have MySQL installed and running.
 2. Open `server/.env` and update the `DB_PASSWORD` field with your MySQL root password.
    ```
    DB_HOST=localhost
    DB_USER=root
-   DB_PASSWORD=your password
+   DB_PASSWORD=VinyasCSE@1234
    DB_NAME=bike_accessories
    ```
 3. Initialize the database by running:
@@ -17,7 +31,7 @@
    node init-db.js
    ```
 
-### Running the Application
+#### Running the Application
 
 1. **Server**:
    ```bash
