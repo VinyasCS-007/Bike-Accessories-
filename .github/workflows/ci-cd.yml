@@ -1,4 +1,4 @@
-name: Professional CI/CD Pipeline
+name: CI/CD Pipeline
 
 on:
   push:
@@ -8,16 +8,38 @@ on:
 
 jobs:
   db-check:
-    name: Validate Database Schema
+    name: Validate Database Schema (MySQL)
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: rootpw
+          MYSQL_DATABASE: bikeacc
+          MYSQL_USER: user
+          MYSQL_PASSWORD: password
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -uroot -prootpw"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Validate SQL syntax
+      - name: Wait for MySQL to be ready
         run: |
-          sudo apt-get update && sudo apt-get install -y sqlite3
-          sqlite3 :memory: < database/schema.sql
-          sqlite3 :memory: < database/seed.sql
+          for i in {1..30}; do
+            mysqladmin ping -h 127.0.0.1 -uroot -prootpw && break
+            sleep 2
+          done
+      - name: Apply schema
+        run: |
+          mysql -h 127.0.0.1 -uroot -prootpw bikeacc < database/schema.sql
+      - name: Apply seed data
+        run: |
+          mysql -h 127.0.0.1 -uroot -prootpw bikeacc < database/seed.sql
 
   backend:
     name: Backend Lint & Test
