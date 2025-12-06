@@ -22,7 +22,7 @@ You can run the entire application without installing Node.js or MySQL locally.
    ```
    DB_HOST=localhost
    DB_USER=root
-   DB_PASSWORD=VinyasCSE@1234
+   DB_PASSWORD=yourpassword
    DB_NAME=bike_accessories
    ```
 3. Initialize the database by running:
