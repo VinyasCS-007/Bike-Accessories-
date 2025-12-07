@@ -51,3 +51,5 @@ You can run the entire application without installing Node.js or MySQL locally.
 - Browse products
 - View product details
 - Responsive design
+
+[![CI/CD Pipeline](https://github.com/VinyasCS-007/Bike-Accessories-/actions/workflows/main.yml/badge.svg)](https://github.com/VinyasCS-007/Bike-Accessories-/actions/workflows/main.yml)
