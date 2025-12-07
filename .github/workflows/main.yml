@@ -114,11 +114,11 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       - name: Build Docker Images
-        run: docker-compose build
+        run: docker compose build
 
       - name: Verify Containers Start
         run: |
-          docker-compose up -d
+          docker compose up -d
           sleep 10
           docker-compose ps
           docker-compose logs server
