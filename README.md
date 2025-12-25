@@ -1,4 +1,4 @@
-# Bike Accessories Shop
+# Bike Accessories Shop using MySQL
 
 ## Setup Instructions
 
